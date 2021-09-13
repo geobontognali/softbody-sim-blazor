@@ -10,6 +10,9 @@ namespace BlazorWebAssemblyDemo.Models
         private double PositionX { get; set; }
         private double PositionY { get; set; }
 
+        private double VelocityX { get; set; } = 0;
+        private double VelocityY { get; set; } = 0;
+
         public Guid ID { get; }
 
         public Knot(double x, double y)
@@ -23,12 +26,12 @@ namespace BlazorWebAssemblyDemo.Models
         // TODO: Apply as a force
         private void ApplyGravity()
         {
-            PositionY = PositionY + (Globals.Gravity * (Globals.DeltaTime.Milliseconds / 1000d));
-        }
-
-        private void CheckRelevance()
-        {
-            // Todo: If object its out of range, should be deleted from the simulation
+            var DeltaTimeFactor = (Globals.DeltaTime.Milliseconds / 1000d);
+            // Update new current Y velocity
+            VelocityY = VelocityY + (Globals.Gravity * DeltaTimeFactor);
+            // Calculate new Y position from current velocity + gravity
+            PositionY = PositionY + (VelocityY * DeltaTimeFactor);
+            Console.WriteLine(VelocityY);
         }
 
 
@@ -36,7 +39,6 @@ namespace BlazorWebAssemblyDemo.Models
         public void Update()
         {
             ApplyGravity();
-            CheckRelevance();
         }
         // Return current position as a CSS string
         public string GetPositionCSS()

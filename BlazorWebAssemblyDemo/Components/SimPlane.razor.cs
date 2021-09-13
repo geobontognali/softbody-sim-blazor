@@ -15,31 +15,30 @@ namespace BlazorWebAssemblyDemo.Components
         protected override void OnInitialized()
         {
             KnotA = new Knot(20, 20);
-            Globals.TargetFPS = 60;
+            Globals.TargetFPS = 120;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        // Start main Sim
+        // Start main Simulation
         public async void Run()
         {
             if(!Globals.simRunning)
             {
                 Globals.simRunning = true;
-                Globals.DeltaTimerStart = new DateTime(0);
+                Globals.DeltaTimerStart = DateTime.Now;
                 while (Globals.simRunning)
                 {
                     // Update DeltaTime Var with the interval from the last frame
                     Globals.UpdateDeltaTime();
-                    Console.WriteLine("Last Frame dured: " + Globals.DeltaTime.Milliseconds);
-
+                   
                     KnotA.Update();
 
                     await InvokeAsync(StateHasChanged); // Update DOM
-                    await Task.Delay(1000 / Globals.TargetFPS); // Wait to match target FPS
+                    await Task.Delay(1000 / Globals.TargetFPS); // Wait to match target FPS 
                 }
             }       
-        }
+        } 
 
         // Stop main Sim
         public void Stop()
