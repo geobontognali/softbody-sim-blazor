@@ -1,0 +1,51 @@
+﻿.sim-plane
+{
+    width: 900px;
+    height: 600px;
+    border: 1px solid gray;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: dimgray;
+}
+
+.knot
+{
+    height: 20px;
+    width: 20px;
+    margin: -10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    border: 0px;
+    position: absolute;
+}
+
+.stick
+{
+    position: absolute;
+}
+
+#control-pane
+{
+    top: 700px;
+    position: absolute;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+} 
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
