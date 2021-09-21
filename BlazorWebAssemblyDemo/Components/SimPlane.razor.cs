@@ -10,12 +10,34 @@ namespace BlazorWebAssemblyDemo.Components
     public partial class SimPlane
     {
         private Knot KnotA;
+        private Knot KnotB;
+        private Knot KnotC;
+        private Knot KnotD;
 
+        private Stick StickAB;
+        private Stick StickBC;
+        private Stick StickCD;
+        private Stick StickDA;
+        private Stick StickAC;
+        private Stick StickBD;
         // Constructor
         protected override void OnInitialized()
         {
-            KnotA = new Knot(20, 20);
-            Globals.TargetFPS = 120;
+            KnotA = new Knot(70, 20);
+            KnotB = new Knot(90, 100, 150, 20);
+            KnotC = new Knot(150, 120, -80, 0);
+            KnotD = new Knot(210, 40);
+
+            /*
+            StickAB = new Stick(KnotA, KnotB);
+            StickBC = new Stick(KnotB, KnotC);
+            StickCD = new Stick(KnotC, KnotD);
+            StickDA = new Stick(KnotD, KnotA);
+            StickAC = new Stick(KnotA, KnotC);
+            StickBD = new Stick(KnotB, KnotD);
+            */
+
+            Globals.TargetFPS = 100;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -33,6 +55,18 @@ namespace BlazorWebAssemblyDemo.Components
                     Globals.UpdateDeltaTime();
                    
                     KnotA.Update();
+                    KnotB.Update();
+                    KnotC.Update();
+                    KnotD.Update();
+
+                    /*
+                    StickAB.Update();
+                    StickBC.Update();
+                    StickCD.Update();
+                    StickDA.Update();
+                    StickAC.Update();
+                    StickBD.Update();
+                    */
 
                     await InvokeAsync(StateHasChanged); // Update DOM
                     await Task.Delay(1000 / Globals.TargetFPS); // Wait to match target FPS 

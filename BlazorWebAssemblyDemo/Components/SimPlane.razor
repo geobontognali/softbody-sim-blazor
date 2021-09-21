@@ -1,10 +1,12 @@
 ﻿<div class="sim-plane">
-    <svg class="stick"><line x1="20" y1="20" x2="100" y2="20" stroke="black" /></svg>
+    <!--<svg class="stick"><line x1="20" y1="20" x2="100" y2="20" stroke="black" /></svg>
     <svg class="stick"><line x1="100" y1="20" x2="180" y2="20" stroke="black" /></svg>
+    <svg class="stick"><line x1="180" y1="20" x2="260" y2="20" stroke="black" /></svg>-->
 
     <div class="knot" style="@KnotA.GetPositionCSS()"></div>
-    <div class="knot" style="left: 100px; top: 20px;"></div>
-    <div class="knot" style="left: 180px; top: 20px;"></div>
+    <div class="knot" style="@KnotB.GetPositionCSS()"></div>
+    <div class="knot" style="@KnotC.GetPositionCSS()"></div>
+    <div class="knot" style="@KnotD.GetPositionCSS()"></div>
 </div>
 
 <div id="control-pane">
